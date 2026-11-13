@@ -1,0 +1,32 @@
+# Déploiement Render (Blueprint) — un seul service web, aucun disque requis.
+services:
+  - type: web
+    name: openwars
+    runtime: node
+    plan: starter
+    region: frankfurt
+    branch: main
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /healthz
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: "22.22.3"
+      - key: NODE_ENV
+        value: production
+      # --- monde ---------------------------------------------------------
+      - key: MAP_WIDTH
+        value: "320"
+      - key: MAP_HEIGHT
+        value: "200"
+      - key: MAP_SEED
+        value: "1337"
+      - key: MAP_STYLE
+        value: continents
+      - key: MAX_PLAYERS
+        value: "8"
+      - key: BOTS
+        value: "6"
+      - key: TICK_RATE
+        value: "10"

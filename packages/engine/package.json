@@ -1,0 +1,13 @@
+{
+  "name": "@openwars/engine",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/*.ts"
+  },
+  "dependencies": {
+    "@openwars/shared": "0.0.0"
+  }
+}
