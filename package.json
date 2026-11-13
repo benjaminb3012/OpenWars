@@ -1,0 +1,37 @@
+{
+  "name": "openwars",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "OpenWars - grand strategy RTS in the browser (deterministic engine, server-authoritative multiplayer)",
+  "engines": {
+    "node": ">=20"
+  },
+  "workspaces": [
+    "packages/shared",
+    "packages/engine"
+  ],
+  "scripts": {
+    "build": "npm run typecheck && node scripts/build.mjs",
+    "build:fast": "node scripts/build.mjs",
+    "dev": "node scripts/dev.mjs",
+    "start": "node dist/server/Server.mjs",
+    "start:dev": "node scripts/dev.mjs",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p packages/shared && tsc --noEmit -p packages/engine",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@openwars/engine": "0.0.0",
+    "@openwars/shared": "0.0.0",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/ws": "^8.5.13",
+    "esbuild": "^0.24.0",
+    "jsdom": "^31.0.1",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}
